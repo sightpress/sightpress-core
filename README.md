@@ -9,8 +9,9 @@ mind. Written in modern, object-oriented PHP. Licensed GPL-2.0-or-later.
 
 The core covers sites, hierarchical pages, authors, the media library (local,
 cloud storage or CDN), the widgets library, navigation menus, internal links
-that never break, the translation workflow, site profiles, logos and favicons,
-the five generated legal pages, SEO and AIO, service email (invitations,
+that never break, the translation workflow, content planning with an editorial
+calendar, site profiles, logos and favicons, the five generated legal pages,
+SEO and AIO, service email (invitations,
 password resets, security and system alerts), themes and the theme generator,
 the accessibility linter and publish gate, the accessibility dashboard and
 feedback form, the admin, the API, the installer and the plugin engine.

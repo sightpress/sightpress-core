@@ -15,3 +15,15 @@ composer.phar
 # Claude Code (personal overrides)
 .claude/settings.local.json
 CLAUDE.local.md
+
+# SightPress
+/node_modules/
+/var/
+/.env.local
+/.env.*.local
+/phpstan.neon
+/playwright-report/
+/test-results/
+/.phpunit.result.cache
+/.rector.cache
+/.deptrac.cache
