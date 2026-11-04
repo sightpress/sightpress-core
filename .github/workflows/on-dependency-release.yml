@@ -1,0 +1,15 @@
+name: On dependency release
+
+# Receives repository_dispatch from plugin-core (RELEASING.md §6). Runs the
+# full CI with the new version; a version inside the constraint changes nothing.
+
+on:
+  repository_dispatch:
+    types: [plugin-core-released]
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    uses: sightpress/.github/.github/workflows/php-qa.yml@main
