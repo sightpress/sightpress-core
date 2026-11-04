@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, 'next', '[0-9]+.[0-9]+']
+
+permissions:
+  contents: read
+
+jobs:
+  pr-title:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Conventional Commits title (PRs are squash-merged)
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          if ! printf '%s' "$TITLE" | grep -Eq '^(feat|fix|perf|refactor|docs|test|ci|build|chore|revert)(\([a-z0-9._-]+\))?!?: .+'; then
+            echo "::error::The pull request title must follow Conventional Commits, for example 'fix: handle empty alt text'."
+            exit 1
+          fi
+
+  qa:
+    uses: sightpress/.github/.github/workflows/php-qa.yml@main
+
+  # The one required status check for branch protection.
+  qa-gate:
+    if: always()
+    needs: [qa, pr-title]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every required job passed
+        env:
+          RESULTS: ${{ join(needs.*.result, ' ') }}
+        run: |
+          for result in $RESULTS; do
+            if [ "$result" != "success" ] && [ "$result" != "skipped" ]; then
+              echo "::error::A required job finished with: $result"
+              exit 1
+            fi
+          done
