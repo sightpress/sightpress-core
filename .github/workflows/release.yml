@@ -16,6 +16,6 @@ jobs:
     uses: sightpress/.github/.github/workflows/release.yml@main
     with:
       package: sightpress/core
-      dependents: '["plugin-articles","plugin-community","plugin-forms","plugin-newsletter","plugin-notifications","plugin-image-finder","plugin-ai","plugin-import","skeleton"]'
+      dependents: '["plugin-articles","plugin-community-helper","plugin-form-builder","plugin-newsletter-manager","plugin-notifications-helper","plugin-image-finder","plugin-ai-helper","plugin-file-importer","skeleton"]'
       event-type: package-released
     secrets: inherit
