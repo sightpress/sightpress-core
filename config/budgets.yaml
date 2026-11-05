@@ -1,0 +1,54 @@
+# Performance budgets. CI fails when a measurement breaks one.
+# Budgets can be tightened. Loosening one needs a reason recorded in the pull request.
+#
+# limit: the bound. rule: "lt" means the measurement must be below it, "lte" at or below it.
+version: 1
+budgets:
+  server_time_ms.public_cache_miss_p95:
+    limit: 150
+    rule: lt
+    description: Public page, server time, cache miss (p95), in milliseconds
+  server_time_ms.public_cache_hit_p95:
+    limit: 20
+    rule: lt
+    description: Public page served from the HTTP cache (p95), in milliseconds
+  server_time_ms.admin_p95:
+    limit: 300
+    rule: lt
+    description: Admin list or editor screen, server time (p95), in milliseconds
+  assets.theme_css_compressed_bytes:
+    limit: 51200
+    rule: lt
+    description: Default theme CSS, compressed, in bytes (50 KB)
+  assets.public_js_compressed_bytes:
+    limit: 30720
+    rule: lt
+    description: JavaScript on public pages, compressed, in bytes (30 KB)
+  assets.fonts_per_script:
+    limit: 2
+    rule: lte
+    description: Web font files per script on a page
+  html.page_compressed_bytes:
+    limit: 51200
+    rule: lt
+    description: HTML size of a typical page, compressed, in bytes (50 KB)
+  html.dom_nodes:
+    limit: 1500
+    rule: lt
+    description: DOM nodes on a typical page
+  web_vitals.lcp_ms:
+    limit: 2500
+    rule: lt
+    description: Largest Contentful Paint, mid-range mobile on throttled 4G, in milliseconds
+  web_vitals.inp_ms:
+    limit: 200
+    rule: lt
+    description: Interaction to Next Paint, in milliseconds
+  web_vitals.cls:
+    limit: 0.1
+    rule: lt
+    description: Cumulative Layout Shift
+# Query counts are fixed per route and independent of the number of items. Listing routes assert this
+# in tests with ListingQueryAssertions; a route may register a ceiling here once it exists.
+queries:
+  routes: {}
