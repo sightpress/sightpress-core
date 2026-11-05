@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en-GB" target-language="pt-PT" datatype="plaintext" original="messages">
+    <body>
+      <trans-unit id="admin.skip_link" resname="admin.skip_link">
+        <source>Skip to main content</source>
+        <target state="needs-review-translation">Saltar para o conteúdo principal</target>
+      </trans-unit>
+      <trans-unit id="admin.brand" resname="admin.brand">
+        <source>SightPress</source>
+        <target state="translated">SightPress</target>
+        <note>neutral</note>
+      </trans-unit>
+      <trans-unit id="admin.page_title" resname="admin.page_title">
+        <source>{title}: SightPress admin</source>
+        <target state="needs-review-translation">{title}: administração do SightPress</target>
+      </trans-unit>
+      <trans-unit id="admin.nav.label" resname="admin.nav.label">
+        <source>Admin</source>
+        <target state="needs-review-translation">Administração</target>
+      </trans-unit>
+      <trans-unit id="admin.nav.dashboard" resname="admin.nav.dashboard">
+        <source>Dashboard</source>
+        <target state="needs-review-translation">Painel</target>
+      </trans-unit>
+      <trans-unit id="admin.footer.text" resname="admin.footer.text">
+        <source>SightPress is designed with blind and low-vision creators in mind.</source>
+        <target state="needs-review-translation">O SightPress foi pensado para criadores cegos e com baixa visão.</target>
+      </trans-unit>
+      <trans-unit id="admin.dashboard.title" resname="admin.dashboard.title">
+        <source>Dashboard</source>
+        <target state="needs-review-translation">Painel</target>
+      </trans-unit>
+      <trans-unit id="admin.dashboard.intro" resname="admin.dashboard.intro">
+        <source>Welcome to SightPress. Your admin screens will appear here as they are added.</source>
+        <target state="needs-review-translation">Bem-vindo ao SightPress. Os seus ecrãs de administração vão aparecer aqui à medida que forem adicionados.</target>
+      </trans-unit>
+      <trans-unit id="admin.error_summary.title" resname="admin.error_summary.title">
+        <source>There is a problem</source>
+        <target state="needs-review-translation">Há um problema</target>
+      </trans-unit>
+      <trans-unit id="admin.error_summary.count" resname="admin.error_summary.count">
+        <source>{count, plural, one {# problem needs fixing} other {# problems need fixing}}</source>
+        <target state="needs-review-translation">{count, plural, one {# problema para corrigir} many {# problemas para corrigir} other {# problemas para corrigir}}</target>
+      </trans-unit>
+      <trans-unit id="admin.flash.region_label" resname="admin.flash.region_label">
+        <source>Messages</source>
+        <target state="needs-review-translation">Mensagens</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.articles.name" resname="plugin.official.articles.name">
+        <source>Articles</source>
+        <target state="needs-review-translation">Artigos</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.articles.description" resname="plugin.official.articles.description">
+        <source>Articles, categories, tags, archives and feeds.</source>
+        <target state="needs-review-translation">Artigos, categorias, etiquetas, arquivos e feeds.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.community-helper.name" resname="plugin.official.community-helper.name">
+        <source>Community helper</source>
+        <target state="needs-review-translation">Assistente de comunidade</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.community-helper.description" resname="plugin.official.community-helper.description">
+        <source>Comments, likes, share links and saved pages, moderated and accessible.</source>
+        <target state="needs-review-translation">Comentários, gostos, ligações de partilha e páginas guardadas, moderados e acessíveis.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.form-builder.name" resname="plugin.official.form-builder.name">
+        <source>Form builder</source>
+        <target state="needs-review-translation">Construtor de formulários</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.form-builder.description" resname="plugin.official.form-builder.description">
+        <source>Accessible forms and submissions, with spam protection that never uses CAPTCHAs.</source>
+        <target state="needs-review-translation">Formulários e respostas acessíveis, com proteção contra spam que nunca usa CAPTCHAs.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.newsletter-manager.name" resname="plugin.official.newsletter-manager.name">
+        <source>Newsletter manager</source>
+        <target state="needs-review-translation">Gestor de newsletters</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.newsletter-manager.description" resname="plugin.official.newsletter-manager.description">
+        <source>Accessible email newsletters, subscriber lists and an issue archive.</source>
+        <target state="needs-review-translation">Newsletters acessíveis por email, listas de subscritores e um arquivo de edições.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.notifications-helper.name" resname="plugin.official.notifications-helper.name">
+        <source>Notifications helper</source>
+        <target state="needs-review-translation">Assistente de notificações</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.notifications-helper.description" resname="plugin.official.notifications-helper.description">
+        <source>Notifications by email, browser push and text message, as each person prefers.</source>
+        <target state="needs-review-translation">Notificações por email, push do navegador e SMS, como cada pessoa preferir.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.image-finder.name" resname="plugin.official.image-finder.name">
+        <source>Image finder</source>
+        <target state="needs-review-translation">Pesquisa de imagens</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.image-finder.description" resname="plugin.official.image-finder.description">
+        <source>Find free and paid images, with their credits and licences recorded.</source>
+        <target state="needs-review-translation">Encontre imagens gratuitas e pagas, com os créditos e as licenças registados.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.ai-helper.name" resname="plugin.official.ai-helper.name">
+        <source>AI helper</source>
+        <target state="needs-review-translation">Assistente de IA</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.ai-helper.description" resname="plugin.official.ai-helper.description">
+        <source>Optional AI drafts for descriptions and SEO, with your own provider key; a person reviews every draft.</source>
+        <target state="needs-review-translation">Rascunhos opcionais de IA para descrições e SEO, com a sua própria chave do fornecedor; uma pessoa revê cada rascunho.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.file-importer.name" resname="plugin.official.file-importer.name">
+        <source>File importer</source>
+        <target state="needs-review-translation">Importador de ficheiros</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.file-importer.description" resname="plugin.official.file-importer.description">
+        <source>Imports Markdown and DOCX files into pages.</source>
+        <target state="needs-review-translation">Importa ficheiros Markdown e DOCX para páginas.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

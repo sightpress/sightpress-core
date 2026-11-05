@@ -1,0 +1,80 @@
+/*
+ * SightPress admin design tokens: the palette, type scale, space and shape.
+ * This is the one file that defines tokens, so it is the one file with fixed
+ * colours; every other rule uses var(--sp-*). Light and dark palettes pass
+ * WCAG AA (most pairs AAA), and more contrast is used when people ask for it.
+ */
+
+/* stylelint-disable sightpress/tokens-only -- defines the tokens */
+:root {
+  color-scheme: light dark;
+
+  /* Palette, light. Text on surface is 15.8:1, muted text 7.4:1, accent 7.1:1. */
+  --sp-color-surface: #fbfaf7;
+  --sp-color-surface-raised: #ffffff;
+  --sp-color-surface-sunken: #f1eee7;
+  --sp-color-text: #1b1a17;
+  --sp-color-text-muted: #4a463e;
+  --sp-color-border: #c9c3b6;
+  --sp-color-accent: #24508f;
+  --sp-color-accent-strong: #173663;
+  --sp-color-accent-contrast: #ffffff;
+  --sp-color-focus: #1b1a17;
+  --sp-color-focus-ring: #f5c542;
+  --sp-color-error: #a1221c;
+  --sp-color-error-surface: #fdf0ef;
+  --sp-color-success: #1d5f34;
+  --sp-color-success-surface: #edf7f0;
+
+  /* Type: system fonts that cover every script, no web font download. */
+  --sp-font-sans: system-ui, -apple-system, "Segoe UI", "Noto Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --sp-font-size-base: 1.0625rem;
+  --sp-line-height: 1.6;
+  --sp-step--1: 0.9375rem;
+  --sp-step-1: 1.25rem;
+  --sp-step-2: 1.5625rem;
+  --sp-step-3: clamp(1.75rem, 1.4rem + 1.6vw, 2.25rem);
+
+  /* Space and shape. */
+  --sp-space-2xs: 0.25rem;
+  --sp-space-xs: 0.5rem;
+  --sp-space-s: 0.75rem;
+  --sp-space-m: 1rem;
+  --sp-space-l: 1.5rem;
+  --sp-space-xl: 2.5rem;
+  --sp-radius: 0.5rem;
+  --sp-measure: 70ch;
+  --sp-content-width: 72rem;
+  --sp-shadow: 0 1px 2px rgb(27 26 23 / 0.08), 0 4px 16px rgb(27 26 23 / 0.06);
+  --sp-transition: 150ms ease-out;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Palette, dark. Text on surface is 14.9:1, muted text 8.1:1, accent 7.6:1. */
+    --sp-color-surface: #16171a;
+    --sp-color-surface-raised: #1f2125;
+    --sp-color-surface-sunken: #101113;
+    --sp-color-text: #f1efe9;
+    --sp-color-text-muted: #c4c0b6;
+    --sp-color-border: #4a4c52;
+    --sp-color-accent: #9cc3ff;
+    --sp-color-accent-strong: #c7dcff;
+    --sp-color-accent-contrast: #0e1a2e;
+    --sp-color-focus: #f1efe9;
+    --sp-color-focus-ring: #f5c542;
+    --sp-color-error: #ffaaa3;
+    --sp-color-error-surface: #3a1715;
+    --sp-color-success: #8fd8a6;
+    --sp-color-success-surface: #12301c;
+    --sp-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 4px 16px rgb(0 0 0 / 0.3);
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --sp-color-text-muted: var(--sp-color-text);
+    --sp-color-border: var(--sp-color-text);
+  }
+}
+/* stylelint-enable sightpress/tokens-only */

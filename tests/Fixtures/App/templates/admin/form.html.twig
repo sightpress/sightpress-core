@@ -1,0 +1,19 @@
+{% extends '@SightPressCore/admin/layout.html.twig' %}
+
+{% block title %}Fixture form{% endblock %}
+
+{% block content %}
+    {%- set title_error = errors|filter(e => e.field == 'title')|first -%}
+    <form method="post" novalidate>
+        <div class="sp-field">
+            <label for="title">Title (required)</label>
+            <p id="title-hint" class="sp-hint">The name shown at the top of the page.</p>
+            {%- if title_error %}
+            <p id="title-error" class="sp-field-error">{{ title_error.message }}</p>
+            {%- endif %}
+            <input id="title" name="title" type="text" value="{{ title }}" autocomplete="off"
+                aria-describedby="title-hint{% if title_error %} title-error{% endif %}"{% if title_error %} aria-invalid="true"{% endif %}>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

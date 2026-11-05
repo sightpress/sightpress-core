@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en-GB" target-language="pt-BR" datatype="plaintext" original="messages">
+    <body>
+      <trans-unit id="admin.skip_link" resname="admin.skip_link">
+        <source>Skip to main content</source>
+        <target state="needs-review-translation">Pular para o conteúdo principal</target>
+      </trans-unit>
+      <trans-unit id="admin.dashboard.intro" resname="admin.dashboard.intro">
+        <source>Welcome to SightPress. Your admin screens will appear here as they are added.</source>
+        <target state="needs-review-translation">Boas-vindas ao SightPress. Suas telas de administração vão aparecer aqui à medida que forem adicionadas.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.articles.description" resname="plugin.official.articles.description">
+        <source>Articles, categories, tags, archives and feeds.</source>
+        <target state="needs-review-translation">Artigos, categorias, tags, arquivos e feeds.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.community-helper.description" resname="plugin.official.community-helper.description">
+        <source>Comments, likes, share links and saved pages, moderated and accessible.</source>
+        <target state="needs-review-translation">Comentários, curtidas, links de compartilhamento e páginas salvas, moderados e acessíveis.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.newsletter-manager.name" resname="plugin.official.newsletter-manager.name">
+        <source>Newsletter manager</source>
+        <target state="needs-review-translation">Gerenciador de newsletters</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.newsletter-manager.description" resname="plugin.official.newsletter-manager.description">
+        <source>Accessible email newsletters, subscriber lists and an issue archive.</source>
+        <target state="needs-review-translation">Newsletters acessíveis por e-mail, listas de assinantes e um arquivo de edições.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.notifications-helper.description" resname="plugin.official.notifications-helper.description">
+        <source>Notifications by email, browser push and text message, as each person prefers.</source>
+        <target state="needs-review-translation">Notificações por e-mail, push do navegador e SMS, como cada pessoa preferir.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.image-finder.description" resname="plugin.official.image-finder.description">
+        <source>Find free and paid images, with their credits and licences recorded.</source>
+        <target state="needs-review-translation">Encontre imagens gratuitas e pagas, com os créditos e as licenças registrados.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.ai-helper.description" resname="plugin.official.ai-helper.description">
+        <source>Optional AI drafts for descriptions and SEO, with your own provider key; a person reviews every draft.</source>
+        <target state="needs-review-translation">Rascunhos opcionais de IA para descrições e SEO, com sua própria chave do provedor; uma pessoa revisa cada rascunho.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.file-importer.name" resname="plugin.official.file-importer.name">
+        <source>File importer</source>
+        <target state="needs-review-translation">Importador de arquivos</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.file-importer.description" resname="plugin.official.file-importer.description">
+        <source>Imports Markdown and DOCX files into pages.</source>
+        <target state="needs-review-translation">Importa arquivos Markdown e DOCX para páginas.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

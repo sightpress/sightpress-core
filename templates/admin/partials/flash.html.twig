@@ -1,0 +1,9 @@
+{#- One polite live region per page. Flash messages are rendered into it, so screen readers
+    announce them without moving focus. It stays in the page, empty, when there is nothing to say. -#}
+<div class="sp-flash" role="status" aria-live="polite" aria-label="{{ 'admin.flash.region_label'|trans }}">
+    {%- for type, messages in app.flashes -%}
+        {%- for message in messages %}
+        <p class="sp-flash__message sp-flash__message--{{ type }}">{{ message|trans }}</p>
+        {%- endfor -%}
+    {%- endfor -%}
+</div>

@@ -5,7 +5,9 @@ powerful multi-site, multi-language CMS for everyone, designed with blind and
 low-vision content creators and audiences who use assistive technology in
 mind. Written in modern, object-oriented PHP. Licensed GPL-2.0-or-later.
 
-> **Status:** pre-M0.
+> **Status:** M0, foundations. The installer, the plugin commands, the base
+> admin layout and the accessibility checks are in place; content editing
+> arrives in later milestones.
 
 The core covers sites, hierarchical pages, authors, the media library (local,
 cloud storage or CDN), the widgets library, navigation menus, internal links
@@ -51,15 +53,22 @@ with every plugin removed.
 
 ```bash
 composer install
+composer qa                 # tests with 95% coverage, static analysis, style, boundaries, budgets, licences, audit
 vendor/bin/phpunit          # on a test kernel, with no plugins
-vendor/bin/phpstan analyse
-vendor/bin/deptrac analyse
+npm ci && npm test          # CSS rules, then the admin in a browser with axe-core, keyboard and RTL checks
+vendor/bin/sightpress-check-translations translations messages   # every string in the 11 launch locales
 ```
+
+The browser tests start PHP's built-in server on the test app. You can run
+it yourself to look at the admin:
+`php -S 127.0.0.1:8123 tests/Fixtures/App/public/index.php`, then open
+`http://127.0.0.1:8123/admin`. Screen-reader test scripts and the
+accessibility statement are in [`a11y/`](a11y/).
 
 To run it inside a real app, check out `skeleton` next to this repository and
 run `COMPOSER=composer.dev.json composer install` there.
 
 ## Security
 
-To report a vulnerability, follow `SECURITY.md` (added in M0); please don't
+To report a vulnerability, follow [`SECURITY.md`](SECURITY.md); please don't
 open a public issue.

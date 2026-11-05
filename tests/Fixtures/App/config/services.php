@@ -7,5 +7,6 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 return static function (ContainerConfigurator $container): void {
     $container->services()
         ->defaults()->autowire()->autoconfigure()
-        ->load('SightPress\Core\Tests\Fixtures\App\Controller\\', '../Controller/');
+        ->load('SightPress\Core\Tests\Fixtures\App\Controller\\', '../Controller/')
+        ->load('SightPress\Core\Tests\Fixtures\App\EventListener\\', '../EventListener/');
 };

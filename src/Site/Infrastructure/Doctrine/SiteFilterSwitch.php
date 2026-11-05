@@ -8,9 +8,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 
 /**
- * The only way to run a query without the SiteFilter. A PHPStan rule allows
- * calls to it (and to FilterCollection::disable/suspend) only in super-admin
- * namespaces, and every use needs a stated reason and an isolation test.
+ * The only way to run a query without the SiteFilter. The PHPStan rule
+ * SightPress\Core\Quality\PHPStan\SiteFilterRule allows calls to it (and to
+ * FilterCollection::disable/suspend) only in super-admin namespaces, and every
+ * use needs a stated reason and an isolation test.
  */
 final readonly class SiteFilterSwitch
 {

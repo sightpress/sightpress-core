@@ -20,6 +20,7 @@ final class InstallFields
     public const string MEDIA_STORAGE = 'media_storage';
     public const string MEDIA_PATH = 'media_path';
     public const string PLUGINS = 'plugins';
+    public const string AVAILABLE_PLUGINS = 'available_plugins';
 
     /** @return array<string, InstallField> keyed by field key */
     public static function all(): array
@@ -37,7 +38,8 @@ final class InstallFields
             new InstallField(self::MAIL_FROM, 'Default sender address', 'SIGHTPRESS_MAIL_FROM', 'mail-from', required: true, type: InstallField::EMAIL, example: 'no-reply@example.org'),
             new InstallField(self::MEDIA_STORAGE, 'Media storage', 'SIGHTPRESS_MEDIA_STORAGE', 'media-storage', 'local', type: InstallField::CHOICE, choices: ['local']),
             new InstallField(self::MEDIA_PATH, 'Media folder', 'SIGHTPRESS_MEDIA_PATH', 'media-path', 'var/storage/media', type: InstallField::PATH),
-            new InstallField(self::PLUGINS, 'Plugins available to sites', 'SIGHTPRESS_PLUGINS', 'plugins', 'all'),
+            new InstallField(self::PLUGINS, 'Official plugins to install', 'SIGHTPRESS_PLUGINS', 'plugins', 'none', example: 'articles,form-builder'),
+            new InstallField(self::AVAILABLE_PLUGINS, 'Plugins available to sites', 'SIGHTPRESS_AVAILABLE_PLUGINS', 'available-plugins', 'all', example: 'articles'),
         ];
 
         $byKey = [];

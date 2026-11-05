@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace SightPress\Core\Tests\Kernel\Infrastructure\Security;
 
 use PHPUnit\Framework\TestCase;
+use Psr\Log\AbstractLogger;
 use SightPress\Core\Kernel\Infrastructure\Security\ContentSecurityPolicy;
 use SightPress\Core\Kernel\Infrastructure\Security\CspNonce;
 use SightPress\Core\Kernel\Infrastructure\Security\SecurityHeadersListener;
@@ -81,21 +82,44 @@ final class SecurityHeadersTest extends TestCase
         self::assertFalse($this->respond(Request::create('https://example.org/'), hsts: 0)->headers->has('Strict-Transport-Security'));
     }
 
-    public function testACacheablePageGetsNoNonceUnlessItsTemplateUsedOne(): void
+    public function testACacheablePageGetsNoNonce(): void
     {
         $cacheable = new Response();
         $cacheable->setPublic();
         $cacheable->setSharedMaxAge(60);
         $plain = $this->respond(Request::create('/'), $cacheable);
-        self::assertStringNotContainsString('nonce-', (string) $plain->headers->get('Content-Security-Policy'));
 
-        $request = Request::create('/');
+        self::assertStringNotContainsString('nonce-', (string) $plain->headers->get('Content-Security-Policy'));
+        self::assertTrue($plain->headers->hasCacheControlDirective('public'));
+    }
+
+    public function testACacheablePageThatUsedTheNonceIsMadePrivate(): void
+    {
+        $request = Request::create('/news');
         $stack = new RequestStack();
         $stack->push($request);
         $nonce = new CspNonce($stack)->current();
         $used = new Response();
         $used->setPublic();
-        self::assertStringContainsString("'nonce-$nonce'", (string) $this->respond($request, $used)->headers->get('Content-Security-Policy'));
+        $used->setSharedMaxAge(600);
+        $logger = new class extends AbstractLogger {
+            /** @var list<string> */
+            public array $messages = [];
+
+            public function log($level, \Stringable|string $message, array $context = []): void
+            {
+                $this->messages[] = (\is_string($level) ? $level : 'level').': '.$message.' '.json_encode($context);
+            }
+        };
+
+        $listener = new SecurityHeadersListener(new ContentSecurityPolicy([]), '/admin', 0, $logger);
+        $listener(new ResponseEvent(self::createStub(HttpKernelInterface::class), $request, HttpKernelInterface::MAIN_REQUEST, $used));
+
+        self::assertStringContainsString("'nonce-$nonce'", (string) $used->headers->get('Content-Security-Policy'));
+        self::assertFalse($used->headers->hasCacheControlDirective('public'), 'A shared cache must never replay the nonce.');
+        self::assertFalse($used->headers->hasCacheControlDirective('s-maxage'));
+        self::assertTrue($used->headers->hasCacheControlDirective('private'));
+        self::assertSame(['warning: A cacheable response used the CSP nonce, so it was made private. Remove the inline script or style from its template. {"path":"\\/news"}'], $logger->messages);
     }
 
     public function testSubRequestsAreLeftAlone(): void

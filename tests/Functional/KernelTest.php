@@ -15,6 +15,8 @@ use SightPress\Core\Tests\Fixtures\App\FixtureBundle;
 use SightPress\Core\Tests\Fixtures\App\ProdOnlyBundle;
 use SightPress\Core\Tests\Fixtures\App\TestKernel;
 use SightPress\Plugin\Core\Port\SiteContext;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Tester\ApplicationTester;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Kernel\BundleInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -145,6 +147,26 @@ final class KernelTest extends TestCase
         self::assertInstanceOf(RedactionProcessor::class, $container->get(RedactionProcessor::class));
         self::assertInstanceOf(SiteContext::class, $container->get(SiteContext::class));
         self::assertFalse($container->has(ServerTimingListener::class));
+    }
+
+    public function testTheInstallerAndPluginCommandsAreRegistered(): void
+    {
+        $application = new Application($this->kernel());
+        $application->setAutoExit(false);
+
+        foreach (['sightpress:install', 'sightpress:plugin:list', 'sightpress:plugin:install'] as $name) {
+            self::assertTrue($application->has($name), $name.' is registered.');
+        }
+
+        $tester = new ApplicationTester($application);
+        $tester->run(['command' => 'sightpress:plugin:list']);
+        self::assertSame(0, $tester->getStatusCode());
+        self::assertStringContainsString('Installed plugins: none.', $tester->getDisplay());
+        self::assertStringContainsString('1. Articles (articles), not installed.', $tester->getDisplay(), 'Names come from the core catalogue.');
+
+        $tester->run(['command' => 'sightpress:install', '--from-composer' => true], ['interactive' => false]);
+        self::assertSame(0, $tester->getStatusCode(), 'Under Composer the hook never fails.');
+        self::assertStringContainsString('SightPress isn\'t set up yet.', $tester->getDisplay());
     }
 
     public function testServerTimingCanBeForcedOnOutsideDebugMode(): void

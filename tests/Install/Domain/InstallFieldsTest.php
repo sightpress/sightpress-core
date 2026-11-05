@@ -13,7 +13,7 @@ final class InstallFieldsTest extends TestCase
     {
         $fields = InstallFields::all();
 
-        self::assertCount(13, $fields);
+        self::assertCount(14, $fields);
         foreach ($fields as $key => $field) {
             self::assertSame($key, $field->key);
             self::assertStringStartsWith('SIGHTPRESS_', $field->env);

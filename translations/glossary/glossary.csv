@@ -1,0 +1,22 @@
+en-GB,en-US,pt-PT,pt-BR,es-ES,es-419,fr-FR,fr-CA,it-IT,de-DE,de-CH,note,status
+dashboard,,painel,,panel,,tableau de bord,,bacheca,Übersicht,,The admin start page,draft
+skip link,,ligação para saltar,link para pular,enlace para saltar,,lien d’évitement,,link per saltare,Sprunglink,,WCAG 2.4.1 Bypass Blocks,draft
+main content,,conteúdo principal,,contenido principal,,contenu principal,,contenuto principale,Hauptinhalt,,Target of the skip link,draft
+landmark,,marco,,punto de referencia,,repère,,punto di riferimento,Landmark,,NVDA and JAWS wording,draft
+heading,,cabeçalho,título,encabezado,,titre,,intestazione,Überschrift,,,draft
+link,,ligação,link,enlace,,lien,,link,Link,,,draft
+alternative text,,texto alternativo,,texto alternativo,,texte de remplacement,,testo alternativo,Alternativtext,,WCAG 1.1.1,draft
+long description,,descrição longa,,descripción larga,,description longue,,descrizione lunga,Langbeschreibung,,,draft
+caption,,legenda,,subtítulo,,sous-titre,,sottotitolo,Untertitel,,Captions for video and audio,draft
+transcript,,transcrição,,transcripción,,transcription,,trascrizione,Transkript,,,draft
+error summary,,resumo de erros,,resumen de errores,,récapitulatif des erreurs,,riepilogo degli errori,Fehlerübersicht,,GOV.UK pattern,draft
+page,,página,,página,,page,,pagina,Seite,,The only core content type,draft
+site,,site,,sitio,,site,,sito,Website,,,draft
+media library,,biblioteca de multimédia,biblioteca de mídia,biblioteca multimedia,,médiathèque,,libreria multimediale,Mediathek,,,draft
+plugin,,plugin,,plugin,,extension,,plugin,Plugin,,,draft
+email,,email,e-mail,correo electrónico,,e-mail,courriel,email,E-Mail,,,draft
+file,,ficheiro,arquivo,archivo,,fichier,,file,Datei,,,draft
+screen,,ecrã,tela,pantalla,,écran,,schermata,Seite,,An admin screen,draft
+licence,license,licença,,licencia,,licence,,licenza,Lizenz,,,draft
+newsletter,,newsletter,,boletín,,lettre d’information,infolettre,newsletter,Newsletter,,,draft
+text message,,SMS,,SMS,,SMS,texto,SMS,SMS,,,draft

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en-GB" target-language="fr-CA" datatype="plaintext" original="messages">
+    <body>
+      <trans-unit id="plugin.official.newsletter-manager.name" resname="plugin.official.newsletter-manager.name">
+        <source>Newsletter manager</source>
+        <target state="needs-review-translation">Gestionnaire d’infolettres</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.newsletter-manager.description" resname="plugin.official.newsletter-manager.description">
+        <source>Accessible email newsletters, subscriber lists and an issue archive.</source>
+        <target state="needs-review-translation">Infolettres accessibles par courriel, listes d’abonnés et archive des numéros.</target>
+      </trans-unit>
+      <trans-unit id="plugin.official.notifications-helper.description" resname="plugin.official.notifications-helper.description">
+        <source>Notifications by email, browser push and text message, as each person prefers.</source>
+        <target state="needs-review-translation">Notifications par courriel, notification du navigateur et texto, selon les préférences de chacun.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
