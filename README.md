@@ -20,7 +20,8 @@ Everything else ships as plugins.
 ## Using it
 
 You don't install this package on its own. Create a project from the skeleton,
-which requires it together with the official plugins:
+which requires it; the installer then offers the official plugins, and installs
+only the ones you choose:
 
 ```bash
 composer create-project sightpress/skeleton my-site
