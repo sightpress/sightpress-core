@@ -1,0 +1,89 @@
+deptrac:
+  paths:
+    - ./src
+  layers:
+    # Every module's Application namespace: the commands, handlers and ports other modules may use.
+    - name: Application
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\[^\\]+\\Application\\.*' }
+    - name: Bundle
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\SightPressCoreBundle$' }
+    - name: Kernel
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Kernel\\(?!Application\\).*' }
+    - name: Shared
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Shared\\(?!Application\\).*' }
+    - name: Site
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Site\\(?!Application\\).*' }
+    - name: Localization
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Localization\\(?!Application\\).*' }
+    - name: Identity
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Identity\\(?!Application\\).*' }
+    - name: Content
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Content\\(?!Application\\).*' }
+    - name: Media
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Media\\(?!Application\\).*' }
+    - name: Accessibility
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Accessibility\\(?!Application\\).*' }
+    - name: Theme
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Theme\\(?!Application\\).*' }
+    - name: Seo
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Seo\\(?!Application\\).*' }
+    - name: Mail
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Mail\\(?!Application\\).*' }
+    - name: Plugin
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Plugin\\(?!Application\\).*' }
+    - name: Install
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Install\\(?!Application\\).*' }
+    - name: Admin
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Admin\\.*' }
+    - name: Front
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Front\\.*' }
+    - name: Api
+      collectors:
+        - { type: classLike, value: '^SightPress\\Core\\Api\\.*' }
+    # The Plugin API. The core may use it; it is the only SightPress package the core requires.
+    - name: PluginCore
+      collectors:
+        - { type: classLike, value: '^SightPress\\Plugin\\Core\\.*' }
+    # Any plugin. The core never depends on one, so no layer may list it.
+    - name: Plugins
+      collectors:
+        - { type: classLike, value: '^SightPress\\Plugin\\(?!Core\\).*' }
+  ruleset:
+    # Domain modules never depend on Admin, Front, Api or Install (CLAUDE.md, Architecture).
+    Shared: [PluginCore]
+    Site: [Shared, Application, PluginCore]
+    Localization: [Shared, Site, Application, PluginCore]
+    Identity: [Shared, Site, Localization, Application, PluginCore]
+    Content: [Shared, Site, Localization, Application, PluginCore]
+    Media: [Shared, Site, Localization, Application, PluginCore]
+    Accessibility: [Shared, Site, Localization, Application, PluginCore]
+    Theme: [Shared, Site, Localization, Application, PluginCore]
+    Seo: [Shared, Site, Localization, Application, PluginCore]
+    Mail: [Shared, Site, Localization, Application, PluginCore]
+    Plugin: [Shared, Application, PluginCore]
+    Application: [Shared, Site, Localization, Identity, Content, Media, Accessibility, Theme, Seo, Mail, Plugin, PluginCore]
+    Kernel: [Bundle, Shared, PluginCore]
+    Bundle: [Kernel, Site, Shared, PluginCore]
+    # Install only orchestrates other modules' application commands, and nothing depends on it.
+    Install: [Application, Shared, PluginCore]
+    Admin: [Application, Kernel, Shared, Site, Localization, Identity, Content, Media, Accessibility, Theme, Seo, Mail, Plugin, PluginCore]
+    Front: [Application, Kernel, Shared, Site, Localization, Identity, Content, Media, Accessibility, Theme, Seo, Mail, Plugin, PluginCore]
+    Api: [Application, Kernel, Shared, Site, Localization, Identity, Content, Media, Accessibility, Theme, Seo, Mail, Plugin, PluginCore]
+    Plugins: []

@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+// Checks the performance budgets in config/budgets.yaml.
+// Usage: bin/sightpress-check-budgets [measurements.json]
+// The JSON file maps budget names to measured values (browser and load-test jobs write it).
+
+require __DIR__.'/../vendor/autoload.php';
+
+use SightPress\Core\Kernel\Infrastructure\Performance\BudgetCheck;
+use SightPress\Core\Kernel\Infrastructure\Performance\BudgetTable;
+
+$arguments = array_values(array_slice($argv, 1));
+if (in_array('--help', $arguments, true)) {
+    echo "Usage: sightpress-check-budgets [measurements.json]\n";
+    exit(0);
+}
+
+try {
+    $result = new BudgetCheck(BudgetTable::default())->run(dirname(__DIR__), $arguments[0] ?? null);
+} catch (InvalidArgumentException $e) {
+    fwrite(\STDERR, 'Error: '.$e->getMessage()."\n");
+    exit(2);
+}
+
+foreach ($result['lines'] as $line) {
+    echo $line, "\n";
+}
+exit($result['passed'] ? 0 : 1);

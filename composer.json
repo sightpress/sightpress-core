@@ -1,0 +1,98 @@
+{
+  "name": "sightpress/core",
+  "description": "Every core feature of SightPress, a powerful multi-site, multi-language CMS for everyone, designed with blind and low-vision content creators and audiences in mind. Written in modern, object-oriented PHP.",
+  "type": "symfony-bundle",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://github.com/sightpress/sightpress-core",
+  "require": {
+    "php": "^8.4",
+    "composer-runtime-api": "^2.2",
+    "doctrine/dbal": "^4.2",
+    "doctrine/doctrine-bundle": "^3.0",
+    "doctrine/doctrine-migrations-bundle": "^4.0",
+    "doctrine/orm": "^3.3",
+    "doctrine/persistence": "^4.0",
+    "monolog/monolog": "^3.0",
+    "psr/log": "^3.0",
+    "sightpress/plugin-core": "^1.1",
+    "symfony/config": "^8.0",
+    "symfony/console": "^8.0",
+    "symfony/dependency-injection": "^8.0",
+    "symfony/event-dispatcher": "^8.0",
+    "symfony/framework-bundle": "^8.0",
+    "symfony/http-foundation": "^8.0",
+    "symfony/http-kernel": "^8.0",
+    "symfony/monolog-bundle": "^4.0",
+    "symfony/process": "^8.0",
+    "symfony/routing": "^8.0",
+    "symfony/twig-bundle": "^8.0",
+    "symfony/uid": "^8.0",
+    "symfony/yaml": "^8.0",
+    "twig/twig": "^3.14"
+  },
+  "require-dev": {
+    "deptrac/deptrac": "^4.0",
+    "friendsofphp/php-cs-fixer": "^3.64",
+    "phpstan/extension-installer": "^1.4",
+    "phpstan/phpstan": "^2.1",
+    "phpstan/phpstan-phpunit": "^2.0",
+    "phpunit/phpunit": "^13.0",
+    "rector/rector": "^2.0",
+    "symfony/browser-kit": "^8.0",
+    "symfony/css-selector": "^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SightPress\\Core\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SightPress\\Core\\Tests\\": "tests/",
+      "SightPress\\Core\\Quality\\": "quality/src/"
+    },
+    "exclude-from-classmap": [
+      "tests/Quality/Fixtures/"
+    ]
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "1.0.x-dev"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "test:coverage": [
+      "XDEBUG_MODE=coverage phpunit --coverage-clover var/coverage/clover.xml",
+      "@php vendor/bin/sightpress-check-coverage var/coverage/clover.xml"
+    ],
+    "stan": "phpstan analyse --memory-limit=1G",
+    "cs": "php-cs-fixer fix --dry-run --diff",
+    "cs:fix": "php-cs-fixer fix",
+    "rector": "rector process --dry-run",
+    "deptrac": "deptrac analyse --no-progress",
+    "check:licenses": "@php vendor/bin/sightpress-check-licenses",
+    "check:budgets": "@php bin/sightpress-check-budgets",
+    "lint:twig": "@php vendor/bin/sightpress-lint-twig templates",
+    "qa": [
+      "@test:coverage",
+      "@stan",
+      "@cs",
+      "@rector",
+      "@deptrac",
+      "@lint:twig",
+      "@check:budgets",
+      "@check:licenses",
+      "@composer audit"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
