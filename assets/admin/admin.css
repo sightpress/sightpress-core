@@ -1,0 +1,292 @@
+/*
+ * SightPress admin. Accessible and beautiful (CLAUDE.md rule 7): a calm type
+ * scale, clear hierarchy, light and dark palettes that pass WCAG AA (most
+ * pairs AAA), visible designed focus, and logical properties only, so RTL
+ * mirrors without extra rules. No motion when people ask for less. The
+ * tokens are in tokens.css, loaded first.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --sp-transition: 0s;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-block-size: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--sp-color-surface);
+  color: var(--sp-color-text);
+  font-family: var(--sp-font-sans);
+  font-size: var(--sp-font-size-base);
+  line-height: var(--sp-line-height);
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  margin-block: 0 var(--sp-space-m);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: var(--sp-step-3);
+}
+
+h2 {
+  font-size: var(--sp-step-2);
+}
+
+h3 {
+  font-size: var(--sp-step-1);
+}
+
+p,
+ul,
+ol {
+  margin-block: 0 var(--sp-space-m);
+  max-inline-size: var(--sp-measure);
+}
+
+a {
+  color: var(--sp-color-accent);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a {
+    transition: color var(--sp-transition);
+  }
+}
+
+a:hover {
+  color: var(--sp-color-accent-strong);
+  text-decoration-thickness: 0.14em;
+}
+
+/* One designed focus style everywhere: a dark outline plus a bright halo, visible on any background. */
+:focus-visible {
+  outline: 3px solid var(--sp-color-focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px var(--sp-color-focus-ring);
+  border-radius: 2px;
+}
+
+.sp-skip-link {
+  position: absolute;
+  inset-inline-start: var(--sp-space-m);
+  inset-block-start: var(--sp-space-m);
+  z-index: 10;
+  padding: var(--sp-space-xs) var(--sp-space-m);
+  background: var(--sp-color-accent);
+  color: var(--sp-color-accent-contrast);
+  font-weight: 700;
+  border-radius: var(--sp-radius);
+  /* No transition: the link must be on screen the moment it has focus. */
+  transform: translateY(-200%);
+}
+
+.sp-skip-link:focus {
+  transform: none;
+  color: var(--sp-color-accent-contrast);
+}
+
+.sp-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-space-s) var(--sp-space-xl);
+  padding: var(--sp-space-m) var(--sp-space-l);
+  background: var(--sp-color-surface-raised);
+  border-block-end: 1px solid var(--sp-color-border);
+}
+
+.sp-brand {
+  margin: 0;
+  font-size: var(--sp-step-1);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.sp-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sp-nav a {
+  display: inline-block;
+  padding: var(--sp-space-xs) var(--sp-space-m);
+  border-radius: var(--sp-radius);
+  color: var(--sp-color-text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.sp-nav a:hover {
+  background: var(--sp-color-surface-sunken);
+  text-decoration: underline;
+}
+
+/* The current page is marked in words for screen readers (aria-current) and by shape, never by colour alone. */
+.sp-nav a[aria-current="page"] {
+  background: var(--sp-color-surface-sunken);
+  box-shadow: inset 0 -3px 0 var(--sp-color-accent);
+}
+
+.sp-main {
+  flex: 1;
+  inline-size: 100%;
+  max-inline-size: var(--sp-content-width);
+  margin-inline: auto;
+  padding: var(--sp-space-xl) var(--sp-space-l);
+}
+
+/* Focus moves here from the skip link. A mouse click doesn't need the outline; the keyboard keeps it. */
+.sp-main:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.sp-lead {
+  font-size: var(--sp-step-1);
+  color: var(--sp-color-text-muted);
+}
+
+.sp-error-summary {
+  margin-block-end: var(--sp-space-xl);
+  padding: var(--sp-space-l);
+  background: var(--sp-color-error-surface);
+  border: 2px solid var(--sp-color-error);
+  border-inline-start-width: 8px;
+  border-radius: var(--sp-radius);
+}
+
+.sp-error-summary h2 {
+  font-size: var(--sp-step-1);
+  color: var(--sp-color-error);
+}
+
+.sp-error-summary a {
+  color: var(--sp-color-error);
+  font-weight: 700;
+}
+
+/* Form fields: a visible label, help text and the inline error above the control (GOV.UK order). */
+.sp-field {
+  margin-block-end: var(--sp-space-l);
+}
+
+.sp-field label {
+  display: block;
+  margin-block-end: var(--sp-space-2xs);
+  font-weight: 700;
+}
+
+.sp-hint {
+  margin-block-end: var(--sp-space-xs);
+  color: var(--sp-color-text-muted);
+}
+
+.sp-field-error {
+  margin-block-end: var(--sp-space-xs);
+  color: var(--sp-color-error);
+  font-weight: 700;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+select,
+textarea {
+  inline-size: 100%;
+  max-inline-size: 36rem;
+  min-block-size: 2.75rem;
+  padding: var(--sp-space-xs) var(--sp-space-s);
+  font: inherit;
+  color: var(--sp-color-text);
+  background: var(--sp-color-surface-raised);
+  border: 2px solid var(--sp-color-text-muted);
+  border-radius: var(--sp-radius);
+}
+
+[aria-invalid="true"] {
+  border-color: var(--sp-color-error);
+  border-inline-start-width: 6px;
+}
+
+button {
+  min-block-size: 2.75rem;
+  padding: var(--sp-space-xs) var(--sp-space-l);
+  font: inherit;
+  font-weight: 700;
+  color: var(--sp-color-accent-contrast);
+  background: var(--sp-color-accent);
+  border: 2px solid transparent;
+  border-radius: var(--sp-radius);
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--sp-color-accent-strong);
+}
+
+.sp-flash__message {
+  margin-block-end: var(--sp-space-m);
+  padding: var(--sp-space-s) var(--sp-space-m);
+  background: var(--sp-color-success-surface);
+  border-inline-start: 6px solid var(--sp-color-success);
+  border-radius: var(--sp-radius);
+}
+
+.sp-footer {
+  padding: var(--sp-space-l);
+  background: var(--sp-color-surface-sunken);
+  border-block-start: 1px solid var(--sp-color-border);
+  color: var(--sp-color-text-muted);
+  font-size: var(--sp-step--1);
+}
+
+.sp-footer p {
+  margin: 0;
+  max-inline-size: none;
+}
+
+@media (min-width: 48em) {
+  .sp-header,
+  .sp-main,
+  .sp-footer {
+    padding-inline: var(--sp-space-xl);
+  }
+}

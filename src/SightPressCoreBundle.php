@@ -122,10 +122,11 @@ final class SightPressCoreBundle extends AbstractBundle
             $framework['trusted_headers'] = ['x-forwarded-for', 'x-forwarded-proto', 'x-forwarded-port', 'x-forwarded-prefix'];
         }
         if (is_dir($path.'/translations')) {
-            $framework['translator'] = ['paths' => [$path.'/translations']];
+            // en-GB is the source language; its catalogue is "en" (PLAN §3.1).
+            $framework['translator'] = ['paths' => [$path.'/translations'], 'fallbacks' => ['en']];
         }
         // The admin layout, themes and assets land in M0 step 3c: these hooks pick them up when the folders exist.
-        if (is_dir($path.'/assets') && interface_exists('Symfony\Component\AssetMapper\AssetMapperInterface')) {
+        if (is_dir($path.'/assets') && interface_exists(\Symfony\Component\AssetMapper\AssetMapperInterface::class)) {
             $framework['asset_mapper'] = ['paths' => [$path.'/assets' => 'sightpress-core']];
         }
         $container->extension('framework', $framework);

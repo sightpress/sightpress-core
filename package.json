@@ -1,0 +1,23 @@
+{
+  "name": "sightpress-core-e2e",
+  "private": true,
+  "description": "Browser tests with axe-core for the admin layout, and the CSS rules. The PHP package doesn't need this file.",
+  "license": "GPL-2.0-or-later",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "test": "npm run test:unit && npm run typecheck && npm run test:browser",
+    "test:unit": "stylelint 'assets/**/*.css'",
+    "test:browser": "playwright test",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^22.0.0",
+    "stylelint": "^18.0.0",
+    "typescript": "^5.9.3"
+  }
+}

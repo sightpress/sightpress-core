@@ -1,0 +1,37 @@
+{#- The base admin layout (PLAN §5.3 and .claude/rules/templates-a11y.md): the same landmarks
+    on every screen, a skip link, one h1, lang and dir from the UI locale, a polite live region
+    for messages, and the error summary first when a form has errors. It works without JavaScript. -#}
+{%- set ui_locale = sightpress_ui_locale() -%}
+<!DOCTYPE html>
+<html lang="{{ ui_locale.lang }}" dir="{{ ui_locale.dir }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>{{ 'admin.page_title'|trans({title: block('title')}) }}</title>
+    <link rel="stylesheet" href="{{ asset('sightpress-core/admin/tokens.css') }}">
+    <link rel="stylesheet" href="{{ asset('sightpress-core/admin/admin.css') }}">
+</head>
+<body class="sp-admin"{% if ui_locale.fallback_lang %} lang="{{ ui_locale.fallback_lang }}"{% endif %}>
+    <a class="sp-skip-link" href="#main">{{ 'admin.skip_link'|trans }}</a>
+    <header class="sp-header">
+        <p class="sp-brand">{{ 'admin.brand'|trans }}</p>
+        <nav class="sp-nav" aria-label="{{ 'admin.nav.label'|trans }}">
+            <ul>
+                {%- block navigation -%}
+                <li><a href="{{ path('sightpress_admin_dashboard') }}"{% if app.request.attributes.get('_route') == 'sightpress_admin_dashboard' %} aria-current="page"{% endif %}>{{ 'admin.nav.dashboard'|trans }}</a></li>
+                {%- endblock -%}
+            </ul>
+        </nav>
+    </header>
+    <main id="main" class="sp-main" tabindex="-1">
+        {%- include '@SightPressCore/admin/partials/error_summary.html.twig' with {errors: errors|default([])} only -%}
+        <h1>{{ block('title') }}</h1>
+        {%- include '@SightPressCore/admin/partials/flash.html.twig' -%}
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="sp-footer">
+        <p>{{ 'admin.footer.text'|trans }}</p>
+    </footer>
+</body>
+</html>

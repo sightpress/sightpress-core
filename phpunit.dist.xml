@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-         bootstrap="vendor/autoload.php"
+         bootstrap="tests/bootstrap.php"
          colors="false"
          cacheDirectory=".phpunit.cache"
          failOnRisky="true"
@@ -12,11 +12,13 @@
     <testsuites>
         <testsuite name="unit">
             <directory>tests</directory>
+            <exclude>tests/Quality/Fixtures</exclude>
         </testsuite>
     </testsuites>
     <source>
         <include>
             <directory>src</directory>
+            <directory>quality/src</directory>
         </include>
     </source>
 </phpunit>
