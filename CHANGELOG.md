@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/sightpress/sightpress-core/compare/v1.0.1...v1.1.0) (2026-11-05)
+
+
+### Features
+
+* add the installer, plugin commands, admin layout and accessibility checks ([#8](https://github.com/sightpress/sightpress-core/issues/8)) ([c8fbc67](https://github.com/sightpress/sightpress-core/commit/c8fbc6748c3c65f56677272bf3403a03f2526187))
+
+
+### Bug fixes
+
+* keep composer.dev.json in step with composer.json ([#10](https://github.com/sightpress/sightpress-core/issues/10)) ([5eb949f](https://github.com/sightpress/sightpress-core/commit/5eb949fbb0122f9fb97f4e75d111cdec57ab247b))
+
 ## [1.0.1](https://github.com/sightpress/sightpress-core/compare/v1.0.0...v1.0.1) (2026-11-05)
 
 
